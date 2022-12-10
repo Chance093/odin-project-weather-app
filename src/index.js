@@ -11,3 +11,7 @@ function getCurrentHighTemp(data){
 function getCurrentLowTemp(data){
     return Math.round(data.main.temp_min) - 2;
 }
+
+function getFeelsLikeTemp(data) {
+    return Math.round(data.main.feels_like);
+}
