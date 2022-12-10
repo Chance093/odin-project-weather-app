@@ -15,3 +15,7 @@ function getCurrentLowTemp(data){
 function getFeelsLikeTemp(data) {
     return Math.round(data.main.feels_like);
 }
+
+function getHumidityPercentage(data) {
+    return Math.round(data.main.humidity);
+}
