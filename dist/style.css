@@ -125,6 +125,34 @@ section{
     gap: 3rem;
 }
 
+.search-box{
+    display: flex;
+    align-items: center;
+    width: 45vw;
+    border-bottom: 5px solid white;
+}
+
+.search-box>label>img{
+    height: 3.5rem;
+}
+
+.search-box>input{
+    height: 4rem;
+    width: 40vw;
+    background-color: #AAC0BE;
+    border: none;
+    margin-left: 1rem;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 3rem;
+    color: white;
+    outline: none;
+}
+
+.search-box>input::placeholder{
+    color: white;
+    font-style: italic;
+}
+
 .forecast-five-day{
     display: flex;
     flex-direction: column;
@@ -134,6 +162,25 @@ section{
 
 .forecast-day{
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    width: 45vw;
+}
+
+.forecast-date{
+    font-size: 2rem;
+    width: 175px;
+}
+
+.forecast-weather{
+    height: 4.5rem;
+}
+
+.forecast-min,
+.forecast-max{
+    font-size: 3rem;
+    width: 175px;
 }
 
 /* RIGHT SECTION ====================================================== */
