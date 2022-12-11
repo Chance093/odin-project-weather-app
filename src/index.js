@@ -35,3 +35,7 @@ function getChanceOfRainPercentage(data) {
     }
     return cor;
 }
+
+function getWindSpeed(data) {
+     return data.wind.speed;
+}
