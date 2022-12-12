@@ -10,6 +10,11 @@ import { getForecastHighTemps,
     getForecastLowTemps, 
     getForecastWeatherImgSrc } from "./parse/forecastData";
 import {format, addDays} from "date-fns";
+import feelsLikeIcon from "./imgs/feels-like.png";
+import humidityIcon from "./imgs/humidity.png";
+import windSpeedIcon from "./imgs/wind-speed.png";
+import rainIcon from "./imgs/rain.png";
+import searchIcon from "./imgs/search.png";
 
     
 function renderLocation(city, state) {
@@ -34,6 +39,11 @@ function renderCurrentWeather(data) {
     const humidity = document.querySelector('.humidity-value');
     const cor = document.querySelector('.cor-value');
     const wind = document.querySelector('.wind-value');
+    const feelsLikeImg = document.querySelector('.feels-like-img');
+    const humidityImg = document.querySelector('.humidity-img');
+    const corImg = document.querySelector('.cor-img');
+    const windImg = document.querySelector('.wind-img');
+    const searchImg = document.querySelector('.search-icon');
     
     currentTemp.innerHTML = `${getCurrentTemp(data)}&deg;`;
     currentWeather.src = getWeatherImgSrc(data);
@@ -42,6 +52,11 @@ function renderCurrentWeather(data) {
     humidity.textContent = `${getHumidityPercentage(data)}%`;
     cor.textContent = `${getChanceOfRainPercentage(data)}%`;
     wind.textContent = `${getWindSpeed(data)} mph`;
+    feelsLikeImg.src = feelsLikeIcon;
+    humidityImg.src = humidityIcon;
+    corImg.src = rainIcon;
+    windImg.src = windSpeedIcon;
+    searchImg.src = searchIcon;
 }
 
 function renderForecastWeather(data) {

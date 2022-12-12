@@ -1,4 +1,10 @@
 import {format, addDays} from "date-fns";
+import drizzleIcon from "../imgs/drizzle.png";
+import rainIcon from "../imgs/rain.png";
+import thunderStormIcon from "../imgs/thunderstorm.png";
+import cloudsIcon from "../imgs/clouds.png";
+import snowIcon from "../imgs/snow.png";
+import clearIcon from "../imgs/clear.png";
 
 function sortByDate(data) {
     const dayOne = [];
@@ -56,22 +62,22 @@ function getForecastWeatherImgSrc(data) {
         const weather = arr[0].weather[0].main;
         switch(weather) {
             case 'Thunderstorm':
-                sources.push('../src/imgs/thunderstorm.png');
+                sources.push(thunderStormIcon);
                 break;
             case 'Drizzle':
-                sources.push('../src/imgs/drizzle.png');
+                sources.push(drizzleIcon);
                 break;
             case 'Rain':
-                sources.push('../src/imgs/rain.png');
+                sources.push(rainIcon);
                 break;
             case 'Snow':
-                sources.push('../src/imgs/snow.png');
+                sources.push(snowIcon);
                 break;
             case 'Clear':
-                sources.push('../src/imgs/clear.png');
+                sources.push(clearIcon);
                 break;
             default:
-                sources.push('../src/imgs/clouds.png');
+                sources.push(cloudsIcon);
         }
     });
     return sources;

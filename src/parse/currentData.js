@@ -1,3 +1,10 @@
+import drizzleIcon from "../imgs/drizzle.png";
+import rainIcon from "../imgs/rain.png";
+import thunderStormIcon from "../imgs/thunderstorm.png";
+import cloudsIcon from "../imgs/clouds.png";
+import snowIcon from "../imgs/snow.png";
+import clearIcon from "../imgs/clear.png";
+
 function getCurrentTemp(data){
     return Math.round(data.main.temp);
 }
@@ -6,17 +13,17 @@ function getWeatherImgSrc(data) {
     const weather = data.weather[0].main;
     switch(weather) {
         case 'Thunderstorm':
-            return '../src/imgs/thunderstorm.png';
+            return thunderStormIcon;
         case 'Drizzle':
-            return '../src/imgs/drizzle.png';
+            return drizzleIcon;
         case 'Rain':
-            return '../src/imgs/rain.png';
+            return rainIcon;
         case 'Snow':
-            return '../src/imgs/snow.png';
+            return snowIcon;
         case 'Clear':
-            return '../src/imgs/clear.png';
+            return clearIcon;
         default:
-            return '../src/imgs/clouds.png';
+            return cloudsIcon;
     }
 }
 
