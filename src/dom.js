@@ -11,6 +11,11 @@ import { getForecastHighTemps,
     getForecastWeatherImgSrc } from "./parse/forecastData";
 
     
+function renderLocation(city, state) {
+    const location = document.querySelector('.city-state');
+    location.textContent = `${city}, ${state}`;
+}
+
 function renderCurrentWeather(data) {
     const currentTemp = document.querySelector('.current-temp');
     const currentWeather = document.querySelector('.current-weather');
@@ -42,4 +47,4 @@ function renderForecastWeather(data) {
     forecastMin.forEach((lT, i) => lT.innerHTML = `L: ${lowTemps[i]}&deg;`);
 }
 
-export {renderCurrentWeather, renderForecastWeather}
+export {renderLocation, renderCurrentWeather, renderForecastWeather}

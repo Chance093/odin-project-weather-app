@@ -1,5 +1,3 @@
-import { currentWeatherData } from "./json/current-example";
-import { forecastWeatherData } from "./json/forecast-example";
 import { fetchWeatherData } from "./api";
 
 
