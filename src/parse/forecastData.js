@@ -1,5 +1,6 @@
+import {format, addDays} from "date-fns";
+
 function sortByDate(data) {
-    let date = undefined;
     const dayOne = [];
     const dayTwo = [];
     const dayThree = [];
@@ -7,18 +8,22 @@ function sortByDate(data) {
     const dayFive = [];
     data.list.forEach(fc => {
         const currentDate = fc.dt_txt.split(' ')[0];
-        if(currentDate !== date){
-            if (dayOne.length === 0) dayOne.push(fc);
-            else if (dayTwo.length === 0) dayTwo.push(fc);
-            else if (dayThree.length === 0) dayThree.push(fc);
-            else if (dayFour.length === 0) dayFour.push(fc);
-            else if (dayFive.length === 0) dayFive.push(fc);
-            date = currentDate;
-        } else {
-            if (dayTwo.length === 0) dayOne.push(fc);
-            else if (dayThree.length === 0) dayTwo.push(fc);
-            else if (dayFour.length === 0) dayThree.push(fc);
-            else if (dayFive.length === 0) dayFour.push(fc);
+        switch(currentDate){
+            case format(addDays(new Date(), 1), 'yyyy-MM-dd'):
+                dayOne.push(fc);
+                break;
+            case format(addDays(new Date(), 2), 'yyyy-MM-dd'):
+                dayTwo.push(fc);
+                break;
+            case format(addDays(new Date(), 3), 'yyyy-MM-dd'):
+                dayThree.push(fc);
+                break;
+            case format(addDays(new Date(), 4), 'yyyy-MM-dd'):
+                dayFour.push(fc);
+                break;
+            case format(addDays(new Date(), 5), 'yyyy-MM-dd'):
+                dayFive.push(fc);
+                break;
         }
     })
     return [dayOne, dayTwo, dayThree, dayFour, dayFive];
