@@ -48,7 +48,14 @@ function getForecastLowTemps(data) {
     return lowTemps;
 }
 
-getForecastLowTemps(forecastWeatherData);
+function getForecastWeatherImgSrc(data) {
+    const sorted = sortByDate(data);
+    const sources = [];
+    sorted.forEach(arr => sources.push(arr[0].weather[0].main));
+    return sources;
+}
+
+getForecastWeatherImgSrc(forecastWeatherData);
 
 const input = document.querySelector('input');
 input.addEventListener('keydown', fetchCurrentWeatherData);
