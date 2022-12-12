@@ -1,6 +1,6 @@
 import { currentWeatherData } from "./json/current-example";
 import { forecastWeatherData } from "./json/forecast-example";
-import { fetchGeoCoords } from "./api";
+import { fetchCurrentWeatherData } from "./api";
 
 function getCurrentTemp(data){
     return Math.round(data.main.temp);
@@ -43,4 +43,4 @@ function getWindSpeed(data) {
 }
 
 const input = document.querySelector('input');
-input.addEventListener('keydown', fetchGeoCoords);
+input.addEventListener('keydown', fetchCurrentWeatherData);
