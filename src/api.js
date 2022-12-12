@@ -33,4 +33,20 @@ async function fetchWeatherData(e) {
     }
 }
 
-export {fetchWeatherData}
+async function fetchDataOnPageLoad() {
+    try {
+        const url1 = `https://api.openweathermap.org/data/2.5/weather?lat=36.1672559&lon=-115.148516&units=imperial&appid=${API_KEY}`;
+        const url2 = `https://api.openweathermap.org/data/2.5/forecast?lat=36.1672559&lon=-115.148516&units=imperial&appid=${API_KEY}`;
+        const responses = await Promise.all([fetch(url1), fetch(url2)]);
+        const data1 = await responses[0].json();
+        const data2 = await responses[1].json();
+        renderLocation('Las Vegas', 'Nevada');
+        renderDates();
+        renderCurrentWeather(data1);
+        renderForecastWeather(data2);
+    } catch(err) {
+        alert ('Could not retrieve data');
+    }
+}
+
+export {fetchWeatherData, fetchDataOnPageLoad}
