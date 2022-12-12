@@ -29,7 +29,7 @@ function getForecastHighTemps(data) {
     const highTemps = [];
     sorted.forEach(arr => {
         arr.sort((a, b) => a.main.temp - b.main.temp);
-        highTemps.push(arr[arr.length - 1].main.temp);
+        highTemps.push(Math.round(arr[arr.length - 1].main.temp));
     })
     return highTemps;
 }
@@ -39,7 +39,7 @@ function getForecastLowTemps(data) {
     const lowTemps = [];
     sorted.forEach(arr => {
         arr.sort((a, b) => b.main.temp - a.main.temp);
-        lowTemps.push(arr[arr.length - 1].main.temp);
+        lowTemps.push(Math.round(arr[arr.length - 1].main.temp));
     })
     return lowTemps;
 }
@@ -47,7 +47,28 @@ function getForecastLowTemps(data) {
 function getForecastWeatherImgSrc(data) {
     const sorted = sortByDate(data);
     const sources = [];
-    sorted.forEach(arr => sources.push(arr[0].weather[0].main));
+    sorted.forEach(arr => {
+        const weather = arr[0].weather[0].main;
+        switch(weather) {
+            case 'Thunderstorm':
+                sources.push('../src/imgs/thunderstorm.png');
+                break;
+            case 'Drizzle':
+                sources.push('../src/imgs/drizzle.png');
+                break;
+            case 'Rain':
+                sources.push('../src/imgs/rain.png');
+                break;
+            case 'Snow':
+                sources.push('../src/imgs/snow.png');
+                break;
+            case 'Clear':
+                sources.push('../src/imgs/clear.png');
+                break;
+            default:
+                sources.push('../src/imgs/clouds.png');
+        }
+    });
     return sources;
 }
 
