@@ -6,6 +6,9 @@ import {getCurrentTemp,
     getHumidityPercentage,
     getChanceOfRainPercentage,
     getWindSpeed} from "./parse/currentData";
+import { getForecastHighTemps, 
+    getForecastLowTemps, 
+    getForecastWeatherImgSrc } from "./parse/forecastData";
 
     
 function renderCurrentWeather(data) {
@@ -26,4 +29,17 @@ function renderCurrentWeather(data) {
     wind.textContent = `${getWindSpeed(data)} mph`;
 }
 
-export {renderCurrentWeather}
+function renderForecastWeather(data) {
+    const forecastWeather = document.querySelectorAll('.forecast-weather');
+    const forecastMax = document.querySelectorAll('.forecast-max');
+    const forecastMin = document.querySelectorAll('.forecast-min');
+    const sources = getForecastWeatherImgSrc(data);
+    const highTemps = getForecastHighTemps(data);
+    const lowTemps = getForecastLowTemps(data);
+
+    forecastWeather.forEach((img, i) => img.src = sources[i]);
+    forecastMax.forEach((hT, i) => hT.innerHTML = `H: ${highTemps[i]}&deg;`);
+    forecastMin.forEach((lT, i) => lT.innerHTML = `L: ${lowTemps[i]}&deg;`);
+}
+
+export {renderCurrentWeather, renderForecastWeather}
