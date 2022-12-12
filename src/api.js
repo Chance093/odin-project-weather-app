@@ -26,6 +26,7 @@ async function fetchWeatherData(e) {
         renderLocation(city, state);
         renderCurrentWeather(data1);
         renderForecastWeather(data2);
+        e.target.value = '';
     } catch (err) {
         alert ('Could not retrieve data');
     }
