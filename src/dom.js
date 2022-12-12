@@ -9,11 +9,21 @@ import {getCurrentTemp,
 import { getForecastHighTemps, 
     getForecastLowTemps, 
     getForecastWeatherImgSrc } from "./parse/forecastData";
+import {format, addDays} from "date-fns";
 
     
 function renderLocation(city, state) {
     const location = document.querySelector('.city-state');
     location.textContent = `${city}, ${state}`;
+}
+
+function renderDates() {
+    const currentDate = document.querySelector('.current-date');
+    const monthDays = document.querySelectorAll('.month-day');
+    const daysOfWeek = document.querySelectorAll('.day-of-week');
+    currentDate.textContent = format(new Date(), 'iiii, MM/dd/yyyy');
+    monthDays.forEach((md, i) => md.textContent = format(addDays(new Date(), i + 1), 'MM/dd'));
+    daysOfWeek.forEach((dw, i) => dw.textContent = format(addDays(new Date(), i + 1), 'iiii'));
 }
 
 function renderCurrentWeather(data) {
@@ -47,4 +57,4 @@ function renderForecastWeather(data) {
     forecastMin.forEach((lT, i) => lT.innerHTML = `L: ${lowTemps[i]}&deg;`);
 }
 
-export {renderLocation, renderCurrentWeather, renderForecastWeather}
+export {renderLocation, renderDates, renderCurrentWeather, renderForecastWeather}

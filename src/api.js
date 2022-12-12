@@ -1,4 +1,4 @@
-import { renderLocation, renderCurrentWeather, renderForecastWeather } from "./dom";
+import { renderLocation, renderCurrentWeather, renderForecastWeather, renderDates } from "./dom";
 
 const API_KEY = '7b189ae7eb0f8f6f66ad2f1526a6bd31';
 
@@ -24,6 +24,7 @@ async function fetchWeatherData(e) {
         const data1 = await responses[0].json();
         const data2 = await responses[1].json();
         renderLocation(city, state);
+        renderDates();
         renderCurrentWeather(data1);
         renderForecastWeather(data2);
         e.target.value = '';
