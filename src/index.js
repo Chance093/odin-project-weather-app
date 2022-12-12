@@ -38,7 +38,17 @@ function getForecastHighTemps(data) {
     return highTemps;
 }
 
-getForecastHighTemps(forecastWeatherData);
+function getForecastLowTemps(data) {
+    const sorted = sortByDate(data);
+    const lowTemps = [];
+    sorted.forEach(arr => {
+        arr.sort((a, b) => b.main.temp - a.main.temp);
+        lowTemps.push(arr[arr.length - 1].main.temp);
+    })
+    return lowTemps;
+}
+
+getForecastLowTemps(forecastWeatherData);
 
 const input = document.querySelector('input');
 input.addEventListener('keydown', fetchCurrentWeatherData);
