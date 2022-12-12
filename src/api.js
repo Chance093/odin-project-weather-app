@@ -20,6 +20,7 @@ async function fetchCurrentWeatherData(e) {
         const [lat, lon] = await fetchGeoCoords(e.target.value);
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${API_KEY}`);
         const data = await response.json();
+        console.log(data);
         renderCurrentWeather(data);
     } catch (err) {
         alert ('Could not retrieve data');

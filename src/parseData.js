@@ -2,6 +2,24 @@ function getCurrentTemp(data){
     return Math.round(data.main.temp);
 }
 
+function getWeatherImgSrc(data) {
+    const weather = data.weather[0].main;
+    switch(weather) {
+        case 'Thunderstorm':
+            return '../src/imgs/thunderstorm.png';
+        case 'Drizzle':
+            return '../src/imgs/drizzle.png';
+        case 'Rain':
+            return '../src/imgs/rain.png';
+        case 'Snow':
+            return '../src/imgs/snow.png';
+        case 'Clear':
+            return '../src/imgs/clear.png';
+        default:
+            return '../src/imgs/clouds.png';
+    }
+}
+
 function getCurrentHighTemp(data){
     return Math.round(data.main.temp_max) + 2;
 }
@@ -35,11 +53,12 @@ function getChanceOfRainPercentage(data) {
 }
 
 function getWindSpeed(data) {
-     return data.wind.speed;
+     return Math.round(data.wind.speed);
 }
 
 export {
     getCurrentTemp,
+    getWeatherImgSrc,
     getCurrentHighTemp,
     getCurrentLowTemp,
     getFeelsLikeTemp,
