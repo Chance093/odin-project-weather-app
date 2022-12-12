@@ -1,3 +1,5 @@
+import { renderCurrentWeather } from "./dom";
+
 const API_KEY = '7b189ae7eb0f8f6f66ad2f1526a6bd31';
 
 async function fetchGeoCoords(input) {
@@ -16,9 +18,9 @@ async function fetchCurrentWeatherData(e) {
     if (e.key !== 'Enter') return;
     try{
         const [lat, lon] = await fetchGeoCoords(e.target.value);
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`);
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${API_KEY}`);
         const data = await response.json();
-        return data;
+        renderCurrentWeather(data);
     } catch (err) {
         alert ('Could not retrieve data');
     }
