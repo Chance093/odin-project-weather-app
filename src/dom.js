@@ -5,7 +5,7 @@ import {getCurrentTemp,
     getFeelsLikeTemp,
     getHumidityPercentage,
     getChanceOfRainPercentage,
-    getWindSpeed} from "./parseData";
+    getWindSpeed} from "./parse/currentData";
 
     
 function renderCurrentWeather(data) {
